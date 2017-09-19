@@ -2,6 +2,9 @@ package grafics.main;
 
 
 import grafics.popup.CirclePopup;
+import grafics.popup.LinePopup;
+import grafics.popup.RectanglePopup;
+import grafics.popup.TrianglePopup;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -13,6 +16,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Line;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 @SuppressWarnings("restriction")
@@ -42,11 +47,13 @@ public class UIMain extends Application {
             }
         });
         javafx.scene.control.Button btn2 = new javafx.scene.control.Button();
-        btn2.setText("Square");
+        btn2.setText("Rectangle");
         btn2.setOnAction(new EventHandler<ActionEvent>() {
  
             public void handle(ActionEvent event) {
-                System.out.println("Hello World!");
+            	RectanglePopup popup = new RectanglePopup();
+            	Rectangle r = popup.pop();
+            	gc.strokeRect(r.getX(), r.getY(), r.getWidth(), r.getHeight());
             }
         });
         javafx.scene.control.Button btn3 = new javafx.scene.control.Button();
@@ -54,7 +61,11 @@ public class UIMain extends Application {
         btn3.setOnAction(new EventHandler<ActionEvent>() {
  
             public void handle(ActionEvent event) {
-                System.out.println("Hello World!");
+            	TrianglePopup popup = new TrianglePopup();
+            	Line[] l = popup.pop();
+            	gc.strokeLine(l[0].getStartX(), l[0].getStartY(), l[0].getEndX(), l[0].getEndY());
+            	gc.strokeLine(l[1].getStartX(), l[1].getStartY(), l[1].getEndX(), l[1].getEndY());
+            	gc.strokeLine(l[2].getStartX(), l[2].getStartY(), l[2].getEndX(), l[2].getEndY());
             }
         });
         javafx.scene.control.Button btn4 = new javafx.scene.control.Button();
@@ -62,7 +73,9 @@ public class UIMain extends Application {
         btn4.setOnAction(new EventHandler<ActionEvent>() {
  
             public void handle(ActionEvent event) {
-                System.out.println("Hello World!");
+            	LinePopup popup = new LinePopup();
+            	Line l = popup.pop();
+            	gc.strokeLine(l.getStartX(), l.getStartY(), l.getEndX(), l.getEndY());
             }
         });
         
